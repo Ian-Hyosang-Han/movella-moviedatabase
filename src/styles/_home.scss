@@ -1,0 +1,33 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.home-banner .swiper-pagination-bullet-active {
+    --swiper-theme-color: #b5936e;
+}
+
+.home-banner .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+}
+
+.swiper-pagination-bullet {
+    width: 10px !important;
+    height: 10px !important;
+    background: rgba(181, 147, 110, 0.5) !important;
+    opacity: 1 !important;
+    transition: all 0.4s ease-out !important;
+}
+
+.swiper-pagination-bullet-active {
+    background: #b5936e !important;
+    transform: scale(1.2);
+    transition: all 0.4s ease-in !important;
+}
+
+.swiper-slide {
+    transition: opacity 0.5s ease;
+}
+
+.home-banner .swiper-wrapper {
+    transition-timing-function: ease-out;
+}

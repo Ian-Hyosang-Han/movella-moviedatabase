@@ -34,7 +34,7 @@ function formatRuntime(movieRuntime) {
     }
 }
 
-export default { 
+export { 
     getYear, 
     formatReleaseDate, 
     formatRating, 
