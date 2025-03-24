@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { fetchMovies } from "../utilities/api";
-import MovieSlider from "../components/Movieslider";
 import HeroMovie from "../components/HeroMovie";
+import MoviesContainer from "../components/MoviesContainer";
 // Library utilities { Swiper, Tabs }
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, EffectFade, Autoplay } from "swiper/modules";
@@ -91,10 +91,10 @@ const Home = () => {
           ))}
         </Swiper>
       </div>
-      <MovieSlider title="Popular" movies={popularMovies} />
-      <MovieSlider title="Now Playing" movies={nowPlayingMovies} />
-      <MovieSlider title="Upcoming" movies={upcomingMovies} />
-      <MovieSlider title="Top Rated" movies={topRatedMovies} />
+      <MoviesContainer title="Popular" movies={popularMovies} />
+      <MoviesContainer title="Now Playing" movies={nowPlayingMovies} />
+      <MoviesContainer title="Upcoming" movies={upcomingMovies} />
+      <MoviesContainer title="Top Rated" movies={topRatedMovies} />
     </main>
   );
 };

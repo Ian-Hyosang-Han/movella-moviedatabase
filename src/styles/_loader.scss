@@ -1,0 +1,78 @@
+@use "mixins" as *;
+@use "variables" as *;
+
+.loader {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 20px;
+}
+
+.loader8::before {
+  content: "";
+  color: white;
+  height: 50px;
+  width: 50px;
+  background: transparent;
+  border-radius: 50%;
+  border: 10px solid transparent;
+  border-color: $primary-color $primary-color transparent transparent;
+  animation: load8 0.6s infinite;
+}
+@keyframes load8 {
+  100% {
+    transform: rotatez(360deg);
+  }
+}
+
+.hero-loader {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 55%;
+  left: 50%;
+}
+
+@include mqMin(830px) {
+  .hero-loader {
+    top: 60%;
+  }
+  .loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 60px;
+    width: 200px;
+    height: 200px;
+    border: 20px solid transparent;
+  }
+  .loader8::before {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@include mqMin(1200px) {
+  .hero-loader {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+
+    .loader {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 60px 120px;
+      width: 400px;
+      height: 400px;
+      border: 40px solid transparent;
+    }
+
+    .loader8::before {
+      width: 200px;
+      height: 200px;
+    }
+  }
+}

@@ -1,3 +1,6 @@
+@use "./normalize";
+@use "./slick";
+@use "./slick-theme";
 @use "./variables";
 @use "./body";
 @use "./mixins";
@@ -5,8 +8,9 @@
 @use "./footer";
 @use "./header";
 @use "./nav";
-@use "./slick-theme";
-@use "./slick";
 @use "./home";
 @use "./heromovie";
 @use "./movieslider";
+@use "./loader";
+@use "./moviecard";
+@use "./typography";
