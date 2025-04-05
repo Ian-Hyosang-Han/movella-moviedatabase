@@ -16,6 +16,6 @@ const HeroBanner = ({ movie }) => {
         </div>
       </div>
     );
-  };
+  }
   
   export default HeroBanner;

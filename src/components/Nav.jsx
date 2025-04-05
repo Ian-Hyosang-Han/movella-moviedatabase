@@ -33,12 +33,12 @@ const Nav = ({ navOpen, setNavOpen }) => {
                 {/* Navigation links section */}
                 <div className="border-left">
                     <li>
-                        <NavLink to="/about">about</NavLink>
+                        <NavLink to="/about">About</NavLink>
                     </li>
                 </div>
                 <div className="border-left">
                     <li>
-                        <NavLink to="/favorites">faves</NavLink>
+                        <NavLink to="/favorites">Faves</NavLink>
                     </li>
                 </div>
             </ul>

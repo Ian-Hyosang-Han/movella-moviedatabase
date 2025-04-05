@@ -120,11 +120,33 @@
 }
 
 hr {
-    width: 100%;
-    max-width: 1920px;
-    height: 1px;
-    border: none;
-    background-color: $font-color-primary;
-    opacity: 0.5;
-    margin: 1rem auto;
+  width: 100%;
+  max-width: 1920px;
+  height: 1px;
+  border: none;
+  background-color: $font-color-primary;
+  opacity: 0.5;
+  margin: 1rem auto;
+}
+
+/*================================================
+==========MEDIA QUERIES SECTION DESIGN============
+================================================*/
+
+@include mqMin(48em) {
+
+  .hero-moreinfo .hero-credits {
+    font-size: 1.5rem;
   }
+
+  .hero-moreinfo .hero-actions {
+    width: auto;
+    margin-top: 0;
+
+    .trailer-button,
+    .moreinfo-btn {
+      font-size: 1.25rem;
+      padding: 0.75rem 1.5rem;
+    }
+  }
+}
