@@ -1,10 +1,6 @@
 import { useState, useEffect } from "react"
 import { NavLink } from "react-router-dom";
 
-// import { PiBooks } from "react-icons/pi";
-// import { LiaBookOpenSolid } from "react-icons/lia";
-// import SearchMovies from "./SearchMovies";
-
 const Nav = ({ navOpen, setNavOpen }) => {
     // Function to close the mobile navigation menu
     function closeNav(e) {

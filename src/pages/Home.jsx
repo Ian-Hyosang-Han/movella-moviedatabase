@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { fetchMovies } from "../utilities/api";
-import HeroMovie from "../components/HeroMovie";
+import HeroInfo from "../components/HeroInfo";
+import HeroBanner from "../components/HeroBanner";
 import MoviesContainer from "../components/MoviesContainer";
 // Library utilities { Swiper, Tabs }
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -17,6 +18,7 @@ const Home = () => {
   const [upcomingMovies, setUpcomingMovies] = useState([]);
   const [topRatedMovies, setTopRatedMovies] = useState([]);
   const [heroMovies, setHeroMovies] = useState([]);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   // Fetch all movie data when the component mounts
   useEffect(() => {
@@ -24,22 +26,22 @@ const Home = () => {
       fetchMovies("popular")
         .then((data) => setPopularMovies(data.results))
         .catch((error) => console.error("Error fetching popular movies:", error));
-  
+
       fetchMovies("now_playing")
         .then((data) => setNowPlayingMovies(data.results))
         .catch((error) => console.error("Error fetching now playing movies:", error));
-  
+
       fetchMovies("upcoming")
         .then((data) => setUpcomingMovies(data.results))
         .catch((error) => console.error("Error fetching upcoming movies:", error));
-  
+
       fetchMovies("top_rated")
         .then((data) => setTopRatedMovies(data.results))
         .catch((error) => console.error("Error fetching top rated movies:", error));
     };
-  
+
     fetchAllMovies();
-  
+
     // Empty dependency array ensures this runs only once on mount
   }, []);
 
@@ -63,6 +65,7 @@ const Home = () => {
       <div className="hero-container">
         <Swiper
           className="home-banner"
+          onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
           spaceBetween={50}
           slidesPerView={1}
           speed={800} // Controls slide transition speed
@@ -70,10 +73,10 @@ const Home = () => {
           fadeEffect={{
             crossFade: true, // Enable cross-fade between slides
           }}
-          autoplay={{
-            delay: 5000,
-            disableOnInteraction: false,
-          }}
+          // autoplay={{
+          //   delay: 5000,
+          //   disableOnInteraction: false,
+          // }}
           pagination={{
             clickable: true,
             bulletClass: "swiper-pagination-bullet",
@@ -86,14 +89,17 @@ const Home = () => {
         >
           {heroMovies.map((movie) => (
             <SwiperSlide key={movie.id}>
-              <HeroMovie movie={movie} />
+              <HeroBanner movie={movie} />
             </SwiperSlide>
           ))}
         </Swiper>
+        {heroMovies.length > 0 && (
+          <HeroInfo movie={heroMovies[activeIndex]} />
+        )}
       </div>
-      <MoviesContainer title="Popular" movies={popularMovies} />
-      <MoviesContainer title="Now Playing" movies={nowPlayingMovies} />
       <MoviesContainer title="Upcoming" movies={upcomingMovies} />
+      <MoviesContainer title="Now Playing" movies={nowPlayingMovies} />
+      <MoviesContainer title="Popular" movies={popularMovies} />
       <MoviesContainer title="Top Rated" movies={topRatedMovies} />
     </main>
   );

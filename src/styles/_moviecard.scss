@@ -6,48 +6,39 @@ div.movie-container {
   position: relative;
   width: 165px;
   height: 250px;
+
   @include mqMax(370px) {
     width: 150px;
   }
+
   @include mqMax(340px) {
     width: 200px;
     height: auto;
     text-align: center;
   }
 
-  img.movie-card {
+  div.movie-container.fadein {
+    opacity: 0;
+    animation: 1s forwards fadeIn;
+  }
+
+  div.movie-container.loading {
+    width: 165px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
     border-radius: 10px;
   }
 
-  &:hover {
-    transform: scale(1.1);
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
-      rgba(0, 0, 0, 0.22) 0px 15px 12px;
-    div.hover-card {
-      filter: opacity(1);
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
     }
-  }
-}
 
-div.movie-container.fadein {
-  opacity: 0;
-  animation: 1s forwards fadeIn;
-}
-
-div.movie-container.loading {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: black;
-  border-radius: 10px;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
+    to {
+      opacity: 1;
+    }
   }
 }

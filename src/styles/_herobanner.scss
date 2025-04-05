@@ -1,9 +1,12 @@
 @use "variables" as *;
 @use "mixins" as *;
 
-/*===================================================
-//=============HERO IMAGE SECTION DESIGN=============
-//==================================================*/
+.hero-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
 
 .hero-slider {
     position: relative;
@@ -47,13 +50,13 @@
     width: calc(100% - 4rem);
     max-width: 70rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    // padding: 2rem;
 }
 
 .hero-container .hero-title {
     color: white;
-    font-family: sans-serif;
-    font-size: 1rem;
+    font-family: 'Black Han sans', sans-serif;
+    font-size: 1.5rem;
+    text-transform: uppercase;
     grid-column: 1 / 4;
     grid-row: 1;
     margin: 0;
@@ -62,8 +65,9 @@
 
 .hero-info-container .hero-release-date {
     color: white;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: 'Arial Narrow Bold', sans-serif;
     font-size: 0.8rem;
+    text-transform: uppercase;
     font-weight: 600;
     grid-column: 1 / 4;
     grid-row: 2;
@@ -72,48 +76,16 @@
     margin-bottom: 0.2rem;
 }
 
-.hero-info-container .hero-overview {
-    display: none;
-    font-weight: 600;
-    color: white;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-}
-
-.hero-info-container .moreinfo-btn {
-    grid-column: 1;
-    grid-row: 3;
-    font-size: 0.8rem;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-weight: 600;
-    border: 1px solid white;
-    background-color: white;
-    border-radius: 1.5rem;
-    padding: 0.2rem 0.3rem;
-    align-items: center;
-    justify-content: center;
-    width: 5rem;
-    margin-top: 0.5rem;
-    transition: all 0.3s ease;
-}
-
-.hero-info-container .moreinfo-btn:hover {
-    transform: scale(1.1);
-    background-color: brown;
-    color: white;
-    border-color: brown;
-    cursor: pointer;
-}
-
-/*==================================================
-  //==========MEDIA QUERIES SECTION DESIGN============
-  //==================================================*/
+/*================================================
+==========MEDIA QUERIES SECTION DESIGN============
+================================================*/
 
 @include mqMin(26.5635rem) {
     .hero-info-container {
         bottom: 3rem;
     }
 
-    .hero-info-container .hero-overview {
+    .hero-info-container {
         display: block;
         grid-row: 3;
         grid-column: 1 / 4;
@@ -137,7 +109,7 @@
         font-size: 2rem;
     }
 
-    .hero-info-container .hero-overview {
+    .hero-info-container {
         width: 100%;
         font-size: 1rem;
     }
@@ -154,7 +126,7 @@
         font-size: 2.5rem;
     }
 
-    .hero-info-container .hero-overview {
+    .hero-info-container {
         grid-column: 1/3;
     }
 }

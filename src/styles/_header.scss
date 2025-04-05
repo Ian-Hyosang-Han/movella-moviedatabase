@@ -2,22 +2,10 @@
 @use "mixins" as *;
 
 .border {
-    border-bottom: solid 5px white;
-    margin: 0.25rem auto;
+    border-bottom: 1px solid white;
+    margin: 0.25rem 0.5rem;
     background-color: transparent;
     max-width: 1920px;
-}
-
-header {
-    color: black;
-    width: 100%;
-    height: auto;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: space-between;
 }
 
 .mobile-menu {
@@ -27,33 +15,10 @@ header {
     align-items: center;
 }
 
-.logo {
-    padding-left: 0.5rem;
-}
-
-.logo a,
-.logo a:visited,
-.logo a:active,
-.logo a:focus {
-    width: fit-content;
-    height: auto;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: 4rem;
-    font-weight: 800;
-    letter-spacing: 2.1px;
-    text-decoration: none;
-    color: white;
-    padding: 0;
-    margin: 0;
-}
-
-.logo a:hover {
-    color: brown;
-}
-
-p {
-    margin: 0;
-    padding: 0;
+.mobile-logo {
+    font-size: 3rem;
+    font-family: 'Monoton', sans-serif;
+    margin-left: 0.5rem;
 }
 
 .desktop-logo {

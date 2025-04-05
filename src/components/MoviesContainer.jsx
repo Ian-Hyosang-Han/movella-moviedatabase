@@ -1,4 +1,3 @@
-import React from "react";
 import Slider from "react-slick";
 import MovieCard from "./MovieCard";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
@@ -6,99 +5,96 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 const MoviesContainer = ({ title, movies, flex = false }) => {
   const settings = {
     dots: false,
-    arrows: true,
+    arrows: false,
     slidesToShow: 6,
-    slidesToScroll: 1,
+    slidesToScroll: 5,
     nextArrow: <FaChevronRight />,
     prevArrow: <FaChevronLeft />,
-    centerMode: true,
-    centerPadding: "10%",
-    initialSlide: Math.floor(movies.length / 2) - 1, // 초기 슬라이드를 가운데로 설정
+    // swipeToSlide: true,
     swipe: true,
     draggable: true,
     infinite: true,
     speed: 500,
     responsive: [
       {
-        breakpoint: 3000,
-        settings: {
-          slidesToShow: 6,
-          slidesToScroll: 1,
-          arrows: true,
-        },
-      },
-      {
         breakpoint: 1820,
         settings: {
           slidesToShow: 6,
-          slidesToScroll: 1,
+          slidesToScroll: 5,
           arrows: true,
         },
       },
       {
         breakpoint: 1720,
         settings: {
-          slidesToShow: 5,
-          slidesToScroll: 1,
+          slidesToShow: 6,
+          slidesToScroll: 5,
           arrows: true,
         },
       },
       {
         breakpoint: 1650,
         settings: {
-          slidesToShow: 4,
-          slidesToScroll: 1,
+          slidesToShow: 6,
+          slidesToScroll: 5,
           arrows: true,
         },
       },
       {
         breakpoint: 1480,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
+          slidesToShow: 6,
+          slidesToScroll: 5,
           arrows: true,
         },
       },
       {
         breakpoint: 1310,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
+          slidesToShow: 6,
+          slidesToScroll: 5,
           arrows: true,
         },
       },
       {
         breakpoint: 1150,
         settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
+          slidesToShow: 5,
+          slidesToScroll: 4,
           arrows: true,
         },
       },
       {
         breakpoint: 970,
         settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
+          slidesToShow: 4,
+          slidesToScroll: 4,
           arrows: true,
         },
       },
       {
         breakpoint: 800,
         settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          centerMode: true,
+          slidesToShow: 3,
+          slidesToScroll: 3,
           arrows: false,
         },
       },
       {
         breakpoint: 545,
         settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          arrows: false,
+        },
+      },
+      {
+        breakpoint: 340,
+        settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
           centerMode: true,
-          arrows: false,
+          arrows: true,
         },
       },
     ],
@@ -118,7 +114,7 @@ const MoviesContainer = ({ title, movies, flex = false }) => {
         {title && <h2>{title}</h2>}
         <div className="movies-container movies-flexed">
           {movies
-            ? movies.map((movie) => <MovieCard key={movie.id} data={movie} />)
+            ? movies.map((movie) => <MovieCard data={movie} />)
             : renderLoadingCards()}
         </div>
       </>

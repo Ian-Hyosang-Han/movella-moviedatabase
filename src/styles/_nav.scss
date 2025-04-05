@@ -3,10 +3,7 @@
 
 /* Base Navigation Styles (Mobile First) */
 .main-nav {
-    // font-family: ;
-    background-color: black;
-    color: black;
-    font-size: 2rem;
+    background-color: transparent;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -31,9 +28,10 @@
 
 /* Navigation List Styles */
 .main-nav ul {
+    text-transform: uppercase;
     list-style: none;
-    font-size: 2rem;
-    font-weight: bold;
+    font-size: 1.5rem;
+    font-family: 'Black Han sans', sans-serif;
     margin: 0;
     padding: 0;
     display: flex;
@@ -70,18 +68,12 @@ a:focus {
 .main-nav li a {
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 1rem 2rem;
+    justify-content: right;
+    padding: 1rem 1rem;
     transition: all 0.3s ease;
     width: 100%;
     height: 100%;
 }
-
-.main-nav li a:hover {
-    background-color: black;
-    color: blue;
-}
-
 
 /* Desktop Styles */
 @media (min-width: 48em) {

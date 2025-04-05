@@ -9,8 +9,9 @@
 @use "./header";
 @use "./nav";
 @use "./home";
-@use "./heromovie";
-@use "./movieslider";
+@use "./herobanner";
+@use "./moviescontainer";
 @use "./loader";
 @use "./moviecard";
 @use "./typography";
+@use "./heroinfo";
