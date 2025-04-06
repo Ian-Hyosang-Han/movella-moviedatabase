@@ -2,14 +2,27 @@ import Slider from "react-slick";
 import MovieCard from "./MovieCard";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
+const NextArrow = ({ className, style, onClick }) => (
+  <div className={className} style={style} onClick={onClick}>
+    <FaChevronRight size={32} />
+  </div>
+);
+
+const PrevArrow = ({ className, style, onClick }) => (
+  <div className={className} style={style} onClick={onClick}>
+    <FaChevronLeft size={32} />
+  </div>
+);
+
 const MoviesContainer = ({ title, movies, flex = false }) => {
   const settings = {
     dots: false,
     arrows: false,
+    // centerMode: true,
     slidesToShow: 6,
     slidesToScroll: 5,
-    nextArrow: <FaChevronRight />,
-    prevArrow: <FaChevronLeft />,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
     // swipeToSlide: true,
     swipe: true,
     draggable: true,
@@ -19,48 +32,48 @@ const MoviesContainer = ({ title, movies, flex = false }) => {
       {
         breakpoint: 1820,
         settings: {
-          slidesToShow: 6,
-          slidesToScroll: 5,
+          slidesToShow: 5,
+          slidesToScroll: 4,
           arrows: true,
         },
       },
       {
         breakpoint: 1720,
         settings: {
-          slidesToShow: 6,
-          slidesToScroll: 5,
+          slidesToShow: 5,
+          slidesToScroll: 4,
           arrows: true,
         },
       },
       {
         breakpoint: 1650,
         settings: {
-          slidesToShow: 6,
-          slidesToScroll: 5,
+          slidesToShow: 4,
+          slidesToScroll: 4,
           arrows: true,
         },
       },
       {
         breakpoint: 1480,
         settings: {
-          slidesToShow: 6,
-          slidesToScroll: 5,
+          slidesToShow: 4,
+          slidesToScroll: 4,
           arrows: true,
         },
       },
       {
         breakpoint: 1310,
         settings: {
-          slidesToShow: 6,
-          slidesToScroll: 5,
+          slidesToShow: 4,
+          slidesToScroll: 4,
           arrows: true,
         },
       },
       {
         breakpoint: 1150,
         settings: {
-          slidesToShow: 5,
-          slidesToScroll: 4,
+          slidesToShow: 3,
+          slidesToScroll: 3,
           arrows: true,
         },
       },
@@ -77,7 +90,7 @@ const MoviesContainer = ({ title, movies, flex = false }) => {
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
-          arrows: false,
+          arrows: true,
         },
       },
       {
@@ -85,7 +98,7 @@ const MoviesContainer = ({ title, movies, flex = false }) => {
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-          arrows: false,
+          arrows: true,
         },
       },
       {
@@ -135,6 +148,6 @@ const MoviesContainer = ({ title, movies, flex = false }) => {
       )}
     </div>
   );
-};
+}
 
 export default MoviesContainer;

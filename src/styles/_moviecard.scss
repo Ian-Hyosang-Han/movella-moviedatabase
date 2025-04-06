@@ -1,44 +1,12 @@
 @use "./variables" as *;
 @use "mixins" as *;
 
-div.movie-container {
-  margin: 0.2rem;
-  position: relative;
-  width: 165px;
-  height: 250px;
+.movie-container img {
+  border-radius: 5px;
+}
 
-  @include mqMax(370px) {
-    width: 150px;
-  }
+@include mqMax(48em) {
+}
 
-  @include mqMax(340px) {
-    width: 200px;
-    height: auto;
-    text-align: center;
-  }
-
-  div.movie-container.fadein {
-    opacity: 0;
-    animation: 1s forwards fadeIn;
-  }
-
-  div.movie-container.loading {
-    width: 165px;
-    height: 250px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: black;
-    border-radius: 10px;
-  }
-
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-
-    to {
-      opacity: 1;
-    }
-  }
+@include mqMax(64em) {
 }

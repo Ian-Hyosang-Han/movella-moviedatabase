@@ -31,6 +31,10 @@ const Header = () => {
     return (
         <div className="border">
             <header className={navOpen ? "show" : ""}>
+                <div className="left-nav">
+                    <p>Where every movie</p>
+                    <p>feels like a novella</p>
+                </div>
                 <div className="desktop-logo">
                     <Link to="/">MOVELLA</Link>
                 </div>
