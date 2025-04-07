@@ -78,7 +78,7 @@ const Header = () => {
                         </div>
                         <div className="border-left">
                             <li>
-                                <NavLink to="/favorites">Faves</NavLink>
+                                <NavLink to="/favourites">Faves</NavLink>
                             </li>
                         </div>
                     </ul>

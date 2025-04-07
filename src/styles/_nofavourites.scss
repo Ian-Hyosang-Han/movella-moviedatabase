@@ -1,0 +1,38 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.no-favourites-page {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: white;
+    font-family: 'Rajdhani', sans-serif;
+  
+    .icon-wrapper {
+      margin-bottom: 1rem;
+    }
+  
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+  
+    p {
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+  
+    .btn-go-home {
+      display: inline-block;
+      background-color: #3c2a4d;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+  
+      &:hover {
+        background-color: #553b6e;
+      }
+    }
+  }

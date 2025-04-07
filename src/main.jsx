@@ -5,6 +5,6 @@ import "./styles/styles.scss";
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <AppRouter />
+      <AppRouter />
   </StrictMode>,
 )

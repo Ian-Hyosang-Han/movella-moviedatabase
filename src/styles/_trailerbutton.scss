@@ -4,32 +4,28 @@
 /* ───────────────
    Trailer Button
 ─────────────── */
-
 .trailer-button {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  background-color: #3c2a4d;
-  color: white;
-  font-family: 'Rajdhani', sans-serif;
-  font-weight: bold;
-  font-size: 1rem;
+  justify-content: center;
+  background-color: transparent;
+  padding: 0;
   border: none;
-  border-radius: 5px;
-  padding: 0.5rem 1rem;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
 
-  &:hover {
-    background-color: #e60000;
+  svg {
+    color: #ffffff;
+    font-size: 3.3rem;
+    transition: color 0.3s ease;
+  }
+
+  &:hover svg {
+    color: #e60000;
     transform: scale(1.05);
   }
 
-  &:hover .youtube-background {
-    fill: #b5936e;
-  }
-
-  &:active {
+  &:active svg {
     transform: scale(0.95);
   }
 
@@ -82,10 +78,11 @@
 }
 
 @include mqMin(48em) {
-    .trailer-button {
-        font-size: 1.25rem;
-        padding: 0.75rem 1.5rem;
+  .trailer-button {
+    svg {
+      font-size: 4rem;
     }
+  }
 }
 
 // @include mqMin(64em) {

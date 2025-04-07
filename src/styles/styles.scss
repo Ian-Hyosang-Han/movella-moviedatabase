@@ -2,12 +2,13 @@
 @use "./slick";
 @use "./slick-theme";
 @use "./variables";
-@use "./body";
 @use "./mixins";
+@use "./home";
+@use "./header";
+@use "./body";
+@use "./about";
 @use "./searchmovies";
 @use "./footer";
-@use "./header";
-@use "./home";
 @use "./herobanner";
 @use "./moviescontainer";
 @use "./loader";
@@ -17,4 +18,6 @@
 @use "./moviedetail";
 @use "./trailerbutton";
 @use "./starrating";
-@use "./favoritebutton";
+@use "./favouritebutton";
+@use "./favourites";
+@use "./nofavourites";

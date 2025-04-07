@@ -1,0 +1,47 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.favourite-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: inherit;
+  transition: color 0.3s ease;
+
+  .favourite-icon {
+    font-size: 2.5rem;
+    color: white;
+    transition: color 0.3s ease;
+  }
+
+  &.active .favourite-icon {
+    color: #3c2a4d;
+  }
+
+  &:hover .favourite-icon {
+    color: #b5936e;
+  }
+
+  &:focus-visible {
+    outline: 2px solid white;
+    outline-offset: 3px;
+  }
+}
+
+/*================================================
+==========MEDIA QUERIES SECTION DESIGN============
+================================================*/
+
+@include mqMin(64em) {
+
+  .favourite-btn {
+    .favourite-icon {
+      font-size: 3.5rem;
+      margin: 0 0.5rem;
+    }
+  }
+}

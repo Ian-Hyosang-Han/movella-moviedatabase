@@ -1,12 +1,83 @@
 @use "./variables" as *;
 @use "mixins" as *;
 
-.movie-container img {
-  border-radius: 5px;
+.movie-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+
+  .movie-card {
+    border-radius: 5px;
+    width: 100%;
+    display: block;
+  }
+
+  .movie-info-box {
+    display: flex;
+    gap: 0.5rem;
+    width: 100%;
+    margin-top: 0.5rem;
+
+    .left {
+      display: flex;
+      align-items: center;
+    }
+
+    .right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.9rem;
+      color: white;
+
+      .movie-title {
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 1rem;
+        margin: 0;
+        flex-wrap: wrap;
+      }
+
+      .movie-date {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0.1rem;
+        font-size: 0.8rem;
+        gap: 0.5rem;
+      }
+
+      .movie-meta {
+        display: none;
+      }
+
+
+    }
+  }
 }
 
-@include mqMax(48em) {
+@include mqMin(48em) {
+
+  .movie-container {
+    .movie-info-box {
+      .right {
+        .movie-meta {
+          display: flex;
+          flex-wrap: wrap;
+          margin: 0.1rem;
+          font-size: 0.8rem;
+          gap: 0.5rem;
+        }
+      }
+    }
+  }
+
+  .single-movie-runtime {
+    font-size: 0.9rem;
+    margin: 0;
+  }
 }
 
-@include mqMax(64em) {
-}
+
+@include mqMin(64em) {}
