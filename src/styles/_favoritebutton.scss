@@ -1,0 +1,20 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.favorite-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+  }
+  
+  .fave-icon {
+    width: 48px;
+    height: 48px;
+    fill: white;
+    transition: transform 0.3s ease;
+  }
+  
+  .fave-icon:hover {
+    transform: scale(1.1);
+  }

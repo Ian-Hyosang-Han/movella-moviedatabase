@@ -5,33 +5,28 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    min-height: 100vh;
+    // min-height: 100vh;
     padding: 0 10px;
     color: $font-color-primary;
+    font-family: 'Rajdhani', sans-serif;
     position: relative;
+    overflow: hidden;
     z-index: 1;
-    
-    p {
-        font-size: 1rem;
-        font-family: 'Rajdhani', sans-serif;
-        margin: 0;
-    }
-
-    h3 {
-        font-size: 2rem;
-        font-family: 'Rajdhani', sans-serif;
-        font-weight: bold;
-        margin: 0.5rem 0;
-    }
 
     .single-movie-title {
         font-size: 2rem;
+        text-transform: uppercase;
         font-family: 'Black Han sans', sans-serif;
+    }
+
+    .single-movie-poster img {
+        border-radius: 5px;
+        margin-bottom: 0.5rem;
     }
 
     .movie-poster {
         width: 100%;
-        max-width: 342px;
+        max-width: 300px;
         margin: 0 auto;
         display: block;
     }
@@ -40,14 +35,18 @@
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
+        font-size: 1rem;
         gap: 0.5rem;
-        margin-top: 0.5rem;
+
+        p {
+            margin: 0;
+        }
     }
 
     .movie-actions {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.5rem;
+        gap: 1rem;
         margin-top: 0.5rem;
     }
 
@@ -74,10 +73,16 @@
         content: "";
     }
 
-    // .single-movie-runtime {
-    //     display: flex;
-    //     align-items: center;    
-    // }
+    .overview-title {
+        font-size: 2rem;
+        font-family: 'Rajdhani', sans-serif;
+        font-weight: bold;
+        margin: 0.5rem 0;
+    }
+
+    .single-movie-overview {
+        width: 100%;
+    }
 
     .movie-cast-slider {
         display: flex;
@@ -106,10 +111,10 @@
                 border-bottom-right-radius: 10px;
                 display: flex;
                 align-items: center;
-                justify-content: center; 
+                justify-content: center;
             }
+
             p {
-                margin-top: 0.25rem;
                 font-size: 1rem;
                 font-weight: bold;
             }
@@ -117,41 +122,86 @@
     }
 }
 
+/*================================================
+==========MEDIA QUERIES SECTION DESIGN============
+================================================*/
 
-// .single-movie-grid {
-//     display: grid;
-//     grid-template-columns: 1fr 300px; 
-//     grid-template-rows: auto auto auto auto auto;
-//     gap: 1rem;
-//     align-items: start;
-//   }
+@include mqMin(64rem) {
 
-//   .single-movie-title {
-//     grid-column: 1 / 2;
-//     grid-row: 1;
-//   }
+    .single-movie-wrapper {
 
-//   .single-movie-poster {
-//     grid-column: 2 / 3;
-//     grid-row: 1 / 6;
-//   }
+        .single-movie-title {
+            font-size: 3rem;
+            margin-top: 1rem;
+        }
 
-//   .movie-meta {
-//     grid-column: 1 / 2;
-//     grid-row: 2;
-//   }
+        .single-movie-grid {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            grid-template-rows: auto auto auto auto auto;
+            align-items: start;
+        }
 
-//   .movie-actions {
-//     grid-column: 1 / 2;
-//     grid-row: 3;
-//   }
+        .single-movie-title {
+            grid-column: 1 / 2;
+            grid-row: 1;
+            margin-bottom: 0;
+        }
 
-//   .overview-title {
-//     grid-column: 1 / 2;
-//     grid-row: 4;
-//   }
+        .single-movie-poster {
+            margin-top: 1rem;
+            grid-column: 2 / 3;
+            grid-row: 1 / 6;
+        }
 
-//   .single-movie-overview {
-//     grid-column: 1 / 2;
-//     grid-row: 5;
-//   }
+        .movie-meta {
+            grid-column: 1 / 2;
+            grid-row: 2;
+            font-size: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .movie-actions {
+            grid-column: 1 / 2;
+            grid-row: 3;
+        }
+
+        .overview-title {
+            margin: 1rem 0 0.5rem 0;
+            grid-column: 1 / 2;
+            font-size: 2.5rem;
+            grid-row: 4;
+        }
+
+        .single-movie-overview {
+            grid-column: 1 / 2;
+            grid-row: 5;
+            font-size: 1.5rem;
+            width: 80%;
+            margin-top: 0;
+        }
+
+        .movie-cast-slider {
+            width: 80%;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            margin-left: 1rem;
+            padding: 0;
+        }
+    }
+}
+
+@include mqMin(78em) {
+
+    .single-movie-wrapper {
+
+        .single-movie-grid {
+            padding: 3rem 5rem 3rem 5rem;
+        }
+
+        .movie-cast-slider {
+            margin: 3rem 5rem;
+        }
+
+    }
+}

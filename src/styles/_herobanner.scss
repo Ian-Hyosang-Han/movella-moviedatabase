@@ -97,9 +97,6 @@
 }
 
 @include mqMin(64rem) {
-    .hero-slider {
-        // margin-top: 2rem;
-    }
   
     .hero-info-container {
         left: 50%;
@@ -112,4 +109,9 @@
             font-size: 4rem;
         }
     }
+
+    .hero-slider {
+        margin-top: 5rem;
+    }
+
   }

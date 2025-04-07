@@ -4,13 +4,13 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const NextArrow = ({ className, style, onClick }) => (
   <div className={className} style={style} onClick={onClick}>
-    <FaChevronRight size={32} />
+    <FaChevronRight size={45} />
   </div>
 );
 
 const PrevArrow = ({ className, style, onClick }) => (
   <div className={className} style={style} onClick={onClick}>
-    <FaChevronLeft size={32} />
+    <FaChevronLeft size={45} />
   </div>
 );
 

@@ -31,24 +31,26 @@ const HeroInfo = ({ movie }) => {
   }, [movie]);
 
   return (
-    <div className="hero-moreinfo">
-      <div className="hero-credits">
-        <p><strong>Director:</strong> {director}</p>
-        <p><strong>Cast:</strong> {leadActors.join(", ")}</p>
-      </div>
+    <>
+      <div className="hero-moreinfo">
+        <div className="hero-credits">
+          <p><strong>Director:</strong> {director}</p>
+          <p><strong>Cast:</strong> {leadActors.join(", ")}</p>
+        </div>
 
-      <div className="hero-actions">
-        <TrailerButton trailer={trailer} />
+        <div className="hero-actions">
+          <TrailerButton trailer={trailer} />
 
-        <button
-          className="moreinfo-btn"
-          onClick={() => navigate(`/moviedetail/${movie.id}`)}
-        >
-          More Info
-        </button>
+          <button
+            className="moreinfo-btn"
+            onClick={() => navigate(`/moviedetail/${movie.id}`)}
+          >
+            More Info
+          </button>
+        </div>
       </div>
       <hr />
-    </div>
+    </>
   );
 };
 
