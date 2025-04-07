@@ -1,0 +1,17 @@
+@use 'variables' as *;
+
+h1,
+h2,
+h3,
+h4 {
+    color: white;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+nav {
+    font-weight: 700;
+    font-size: 1.2rem;
+}

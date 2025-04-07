@@ -1,0 +1,28 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+footer {
+    text-align: center;
+    font-size: 1rem;
+    font-family: 'Monoton', Times, serif;
+    color: $font-color-primary;
+    margin: 1rem 0.5rem;
+    border-top: 1px double white;
+    max-width: 1920px;
+}
+
+/*================================================
+==========MEDIA QUERIES SECTION DESIGN============
+================================================*/
+
+@include mqMin(48rem) {
+    footer {
+        font-size: 1.5rem;
+    }
+}
+
+@include mqMin(64rem) {
+    footer {
+        font-size: 1.7rem;
+    }
+}

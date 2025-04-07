@@ -1,0 +1,188 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.favourites-page {
+  padding: 10px;
+  max-width: 320px;
+  margin: 0 auto;
+  min-height: calc(100vh - 160px);
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.movie-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-between;
+  min-height: 60vh;
+}
+
+.fave-header {
+  text-shadow: var(--text-shadow);
+}
+
+.movie-card {
+  flex: 0 0 calc(50% - 5px);
+  height: 218px;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: var(--box-shadow);
+  margin: 0;
+  padding: 0;
+  animation: fadeIn 0.3s ease-in;
+  font-size: 0.7rem;
+
+  &:hover {
+    transform: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  &:active {
+    transform: scale(1.03);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.backdrop {
+  padding: 10px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  font-family: var(--heading-font);
+  font-weight: 800;
+}
+
+.rating-border {
+  width: 30px;
+  height: 30px;
+  font-size: 0.8rem;
+  border-width: 2px;
+}
+
+.title-and-release h2 {
+  font-size: 1rem;
+  margin-bottom: 4px;
+}
+
+.title-and-release p {
+  font-size: 0.5rem;
+  margin-bottom: 4px;
+}
+
+.release-date,
+.movie-excerpt {
+  font-size: 0.6em;
+  line-height: 1.2;
+}
+
+.rating-and-favorite {
+  gap: 5px;
+  margin-bottom: 5px;
+}
+
+.fave-icon {
+  width: 20px;
+  height: 20px;
+}
+
+@include mqMin(48em) {
+  .favourites-page {
+    max-width: 48rem;
+    padding: 20px;
+  }
+
+  .movie-grid {
+    gap: 20px;
+    justify-content: flex-start;
+  }
+
+  .movie-card {
+    flex: 0 0 300px;
+    height: 450px;
+    font-size: 1rem;
+  }
+
+  .backdrop {
+    padding: 0;
+  }
+
+  .rating-border {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+    border-width: 3px;
+  }
+
+  .title-and-release h2 {
+    font-size: 1.25rem;
+  }
+
+  .title-and-release p {
+    font-size: 0.875rem;
+  }
+
+  .release-date,
+  .movie-excerpt {
+    font-size: 0.875em;
+    line-height: 1.4;
+  }
+
+  .fave-icon {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@include mqMin(64em) {
+  .favourites-page {
+    max-width: 75rem;
+  }
+}
+
+@include mqMin(87.5em) {
+  .favourites-page {
+    max-width: 87.5rem;
+  }
+
+//   .movie-card:hover {
+//     transform: scale(1.03);
+//     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+//   }
+
+//   .movie-card:active {
+//     transform: none;
+//     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+//   }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.page-exit {
+  opacity: 0;
+  transform: translateY(-20px);
+}

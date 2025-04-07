@@ -1,0 +1,16 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+.star-rating {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 1.5rem;
+}
+
+.star-rating .rating-text {
+    margin-left: 0.5rem;
+    font-weight: bold;
+    font-size: 1rem;
+    color: white;
+}
