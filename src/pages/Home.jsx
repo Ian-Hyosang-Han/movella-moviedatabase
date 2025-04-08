@@ -11,7 +11,6 @@ import "swiper/css/pagination";
 import "swiper/css/autoplay";
 import "swiper/css/effect-fade";
 
-// State variables to store different categories of movies
 const Home = () => {
   const [popularMovies, setPopularMovies] = useState([]);
   const [nowPlayingMovies, setNowPlayingMovies] = useState([]);
@@ -20,37 +19,51 @@ const Home = () => {
   const [heroMovies, setHeroMovies] = useState([]);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  // Fetch all movie data when the component mounts
   useEffect(() => {
-    const fetchAllMovies = () => {
-      fetchMovies("popular")
-        .then((data) => setPopularMovies(data.results))
-        .catch((error) => console.error("Error fetching popular movies:", error));
+    const today = new Date();
 
-      fetchMovies("now_playing")
-        .then((data) => setNowPlayingMovies(data.results))
-        .catch((error) => console.error("Error fetching now playing movies:", error));
+    const fetchAllMovies = async () => {
+      try {
+        const [popular, nowPlaying, topRated] = await Promise.all([
+          fetchMovies("popular"),
+          fetchMovies("now_playing"),
+          fetchMovies("top_rated"),
+        ]);
 
-      fetchMovies("upcoming")
-        .then((data) => setUpcomingMovies(data.results))
-        .catch((error) => console.error("Error fetching upcoming movies:", error));
+        setPopularMovies(popular.results);
+        setNowPlayingMovies(nowPlaying.results);
+        setTopRatedMovies(topRated.results);
 
-      fetchMovies("top_rated")
-        .then((data) => setTopRatedMovies(data.results))
-        .catch((error) => console.error("Error fetching top rated movies:", error));
+        // Fetch upcoming from both CA and US
+        const caUpcoming = await fetchMovies("upcoming", "CA");
+        const usUpcoming = await fetchMovies("upcoming", "US");
+
+        // Combine and deduplicate
+        const combined = [...caUpcoming.results, ...usUpcoming.results];
+        const uniqueMap = new Map();
+        combined.forEach((movie) => {
+          if (!uniqueMap.has(movie.id)) {
+            uniqueMap.set(movie.id, movie);
+          }
+        });
+
+        // Filter future release dates only
+        const filtered = Array.from(uniqueMap.values()).filter((movie) => {
+          return new Date(movie.release_date) > today;
+        });
+
+        setUpcomingMovies(filtered);
+      } catch (error) {
+        console.error("Error fetching movie data:", error);
+      }
     };
 
     fetchAllMovies();
-
-    // Empty dependency array ensures this runs only once on mount
   }, []);
 
-  // Select a random movie from the "Upcoming" category as the hero movies
   function getRandomMovies(movieList, count = 3) {
     if (!movieList || movieList.length === 0) return [];
-    // Use the [...movelist] to create a copy, returns a negative or positive number to ensure random sorting
     const shuffled = [...movieList].sort(() => 0.5 - Math.random());
-    // Selects and returns the first count elements from the shuffled array
     return shuffled.slice(0, count);
   }
 
@@ -58,7 +71,7 @@ const Home = () => {
     if (upcomingMovies.length > 0) {
       setHeroMovies(getRandomMovies(upcomingMovies, 3));
     }
-  }, [upcomingMovies]); // Run whenever upcomingMovies changes
+  }, [upcomingMovies]);
 
   return (
     <main className="home-page">
@@ -68,24 +81,17 @@ const Home = () => {
           onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
           spaceBetween={50}
           slidesPerView={1}
-          speed={800} // Controls slide transition speed
-          effect={"fade"} // Add fade transition
-          fadeEffect={{
-            crossFade: true, // Enable cross-fade between slides
-          }}
-          // autoplay={{
-          //   delay: 5000,
-          //   disableOnInteraction: false,
-          // }}
+          speed={800}
+          effect={"fade"}
+          fadeEffect={{ crossFade: true }}
           pagination={{
             clickable: true,
             bulletClass: "swiper-pagination-bullet",
             bulletActiveClass: "swiper-pagination-bullet-active",
-            renderBullet: function (index, className) {
-              return '<span class="' + className + '"></span>';
-            },
+            renderBullet: (index, className) =>
+              `<span class="${className}"></span>`,
           }}
-          modules={[Pagination, EffectFade, Autoplay]} // Add EffectFade module
+          modules={[Pagination, EffectFade, Autoplay]}
         >
           {heroMovies.map((movie) => (
             <SwiperSlide key={movie.id}>

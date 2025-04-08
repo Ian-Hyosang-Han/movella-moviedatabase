@@ -7,8 +7,10 @@ const ORIGINAL_IMAGE_URL = `${IMAGE_BASE}original/`;
 const URL_IMAGE = IMAGE_BASE;
 
 // Function to retrieve data from TMDb API (for multiple movies)
-function fetchMovies(endpoint) {
-  return fetch(`https://api.themoviedb.org/3/movie/${endpoint}?api_key=${API_KEY}`)
+function fetchMovies(endpoint, region = "US") {
+  return fetch(
+    `https://api.themoviedb.org/3/movie/${endpoint}?api_key=${API_KEY}&language=en-US&region=${region}`
+  )
     .then((response) => {
       if (!response.ok) {
         throw new Error("Network response was not ok");
