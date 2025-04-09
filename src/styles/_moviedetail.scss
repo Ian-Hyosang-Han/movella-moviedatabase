@@ -5,7 +5,6 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    // min-height: 100vh;
     padding: 0 10px;
     color: $font-color-primary;
     font-family: 'Rajdhani', sans-serif;
@@ -15,9 +14,11 @@
 
     .single-movie-title {
         width: 90%;
-        font-size: 2rem;
+        font-size: 3rem;
+        margin: 0.5rem;
+        letter-spacing: 2px;
         text-transform: uppercase;
-        font-family: 'Black Han sans', sans-serif;
+        font-family: 'Morganite', sans-serif;
     }
 
     .single-movie-poster img {
@@ -127,12 +128,22 @@
 ==========MEDIA QUERIES SECTION DESIGN============
 ================================================*/
 
+@include mqMin(48rem) {
+
+    .single-movie-wrapper {
+
+        .single-movie-title {
+            font-size: 5rem;
+        }
+    }
+}
+
 @include mqMin(64rem) {
 
     .single-movie-wrapper {
 
         .single-movie-title {
-            font-size: 3rem;
+            font-size: 7rem;
             margin-top: 1rem;
         }
 
@@ -147,6 +158,8 @@
             grid-column: 1 / 2;
             grid-row: 1;
             margin-bottom: 0;
+            font-size: 8rem;
+            letter-spacing: 5px;
         }
 
         .single-movie-poster {
@@ -160,6 +173,7 @@
             grid-row: 2;
             font-size: 1.5rem;
             margin: 1rem 0;
+
             p {
                 font-size: 1.5rem;
             }

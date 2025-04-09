@@ -38,7 +38,7 @@ function fetchMovieDetail(movieId) {
     });
 }
 
-// ✅ NEW: Get movie credits (director, cast)
+// Get movie credits (director, cast)
 function fetchMovieCredits(movieId) {
   return fetch(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${API_KEY}`)
     .then((response) => {
@@ -49,7 +49,7 @@ function fetchMovieCredits(movieId) {
     });
 }
 
-// ✅ NEW: Get movie trailer (YouTube only)
+// Get movie trailer (YouTube only)
 function fetchMovieTrailer(movieId) {
   return fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${API_KEY}`)
     .then((response) => {
@@ -65,11 +65,23 @@ function fetchMovieTrailer(movieId) {
     });
 }
 
+// Get search movies
+function fetchSearchMovies(query) {
+  return fetch(
+    `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=${encodeURIComponent(query)}`
+  )
+    .then((res) => {
+      if (!res.ok) throw new Error("Failed to fetch search results");
+      return res.json();
+    });
+}
+
 export {
   fetchMovies,
   fetchMovieDetail,
   fetchMovieCredits,
   fetchMovieTrailer,
+  fetchSearchMovies,
   URL_IMAGE,
   ORIGINAL_IMAGE_URL,
 };

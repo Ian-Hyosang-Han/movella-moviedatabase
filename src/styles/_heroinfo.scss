@@ -13,14 +13,22 @@
 
   .hero-credits {
     font-size: 1rem;
-    font-weight: 500;
     color: $font-color-primary;
-    font-family: 'Rajdhani', sans-serif;
+    font-family: 'Source code pro', sans-serif;
     text-transform: uppercase;
 
     p {
       margin: 0;
+      font-weight: 900;
+
+      span {
+        font-family: 'Source code pro', sans-serif;
+        text-transform: none;
+        margin-right: 0.3rem;
+        font-weight: 200;
+      }
     }
+
   }
 
   .hero-actions {
@@ -92,8 +100,12 @@ hr {
 
 @include mqMin(64em) {
   .hero-moreinfo .hero-credits {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: bold;
+
+    p {
+      padding-bottom: 0.5rem;
+    }
   }
 
   hr {
