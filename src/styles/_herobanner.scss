@@ -54,9 +54,10 @@
 
 .hero-title {
     color: white;
-    font-family: 'Black Han sans', sans-serif;
-    font-size: 1.5rem;
+    font-family: 'Morganite', sans-serif;
+    font-size: 3rem;
     text-transform: uppercase;
+    letter-spacing: 3px;
     grid-column: 1 / 4;
     grid-row: 1;
     margin: 0;
@@ -86,8 +87,9 @@
 @include mqMin(48em) {
 
     .hero-title{
-        font-size: 3rem;
+        font-size: 7rem;
         margin-top: 1rem;
+        line-height: 120px;
     }
 
     .hero-release-date {
@@ -105,8 +107,8 @@
         margin-left: 1rem;
 
         .hero-title {
-            margin-top: 0;
-            font-size: 4rem;
+            margin-top: 2rem;
+            font-size: 9rem;
         }
     }
 

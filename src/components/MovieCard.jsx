@@ -62,6 +62,6 @@ const MovieCard = ({ data, onUnfavourite }) => {
       </div>
     </div>
   );
-};
+}
 
 export default MovieCard;

@@ -34,8 +34,8 @@ const HeroInfo = ({ movie }) => {
     <>
       <div className="hero-moreinfo">
         <div className="hero-credits">
-          <p><strong>Director:</strong> {director}</p>
-          <p><strong>Cast:</strong> {leadActors.join(", ")}</p>
+          <p><span>Director:</span><strong>{director}</strong></p>
+          <p><span>Cast:</span><strong>{leadActors.join(", ")}</strong></p>
         </div>
 
         <div className="hero-actions">

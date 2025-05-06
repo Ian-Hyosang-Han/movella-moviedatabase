@@ -1,6 +1,11 @@
 @use "variables" as *;
 @use "mixins" as *;
 
+.searchBoxWrapper {
+  position: relative;
+  display: inline-block;
+}
+
 .searchBox {
   display: flex;
   align-items: center;
@@ -8,7 +13,6 @@
   border-radius: 35px;
   height: 40px;
   overflow: hidden;
-  // background-color: #333;
   padding: 0 0.5rem;
   transition: all 0.3s ease-in-out;
 
@@ -44,6 +48,32 @@
 
     .searchButton {
       transform: rotate(90deg) scale(1.1);
+    }
+  }
+}
+
+.searchDropdown {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  width: 100%;
+  background-color: #222;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  z-index: 1000;
+  max-height: 300px;
+  overflow-y: auto;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+
+  .searchResultItem {
+    padding: 10px 15px;
+    font-size: 14px;
+    color: white;
+    cursor: pointer;
+    transition: background 0.2s;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
     }
   }
 }
