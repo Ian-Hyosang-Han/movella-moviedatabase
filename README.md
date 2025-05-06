@@ -34,3 +34,6 @@ LocalStorage — Favorites persistence
 This project represents my growing passion for combining clean design with functional code.
 I took special care in every detail — from dynamic movie genres and runtime formatting to accessible interactions and responsive layout.
 Movella is more than a movie database; it’s my learning journey turned into an experience.
+
+## 🔗 Live Site
+https://hyosanghan.com/movella/
