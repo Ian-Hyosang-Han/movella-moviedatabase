@@ -17,7 +17,7 @@ import { GlobalProvider } from '../context/GlobalContext.jsx';
 const AppRouter = () => {
   return (
     <GlobalProvider>
-      <BrowserRouter>
+      <BrowserRouter basename="/movella">
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
