@@ -17,12 +17,12 @@ Fully optimized for mobile, tablet, and desktop screen sizes.
 Page transitions and removal animations powered by react-transition-group.
 
 ## 🛠️ Tech Stack
-React — Functional components and hooks, Router DOM — SPA navigation<br/>
-SCSS — Modular styling with media queries and variables<br/>
-React Icons — Rich iconography<br/>
-React Transition Group — Component animations (favorites removal, page transitions)<br/>
-TMDB API — Real-time movie and media data<br/>
-LocalStorage — Favorites persistence
+<img alt="React" src="https://img.shields.io/badge/-React-45b8d8?style=flat-square&logo=react&logoColor=white" /> — Functional components and hooks, Router DOM — SPA navigation<br/>
+<img alt="Sass" src="https://img.shields.io/badge/-Sass-CC6699?style=flat-square&logo=sass&logoColor=white" /> — Modular styling with media queries and variables<br/>
+<img alt="React Icons" src="https://img.shields.io/badge/-React%20Icons-45b8d8?style=flat-square&logo=react&logoColor=white" /> — Rich iconography<br/>
+<img alt="React Transition Group" src="https://img.shields.io/badge/-React%20Transition%20Group-DB7093?style=flat-square&logo=react&logoColor=white" /> — Component animations (favorites removal, page transitions)<br/>
+<img alt="TMDB API" src="https://img.shields.io/badge/-TMDB%20API-01D277?style=flat-square&logo=themoviedatabase&logoColor=white" /> — Real-time movie and media data<br/>
+<img alt="LocalStorage" src="https://img.shields.io/badge/-LocalStorage-F7DF1E?style=flat-square&logo=javascript&logoColor=black" /> — Favorites persistence
 
 ## 🧠 What I Learned
 - Built a global state manager using Context API for consistent favorite management
