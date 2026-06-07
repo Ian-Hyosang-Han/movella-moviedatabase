@@ -45,3 +45,9 @@
 .home-banner .swiper-wrapper {
   transition-timing-function: ease-out;
 }
+
+@include mqMin(48em) {
+  .home-banner .swiper-pagination {
+    bottom: 2.2rem !important;
+  }
+}
