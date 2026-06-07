@@ -92,7 +92,7 @@ movella/
 
 ## 🔗 Live Site
 
-[movella-moviedatabase.vercel.app](https://movella-moviedatabase.vercel.app/)
+[movella.vercel.app](https://movella.vercel.app/)
 
 ## 🧠 What I Learned
 
