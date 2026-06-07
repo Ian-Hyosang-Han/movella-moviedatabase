@@ -1,24 +1,32 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { URL_IMAGE, fetchMovieDetail } from "../utilities/api";
+import { Link } from "react-router-dom";
+import {
+  URL_IMAGE,
+  fetchMovieDetail,
+  fetchMovieTrailer,
+} from "../utilities/api";
 import { LoadingSpinner } from "./LoadingSpinner";
 import { formatReleaseDate, formatRuntime } from "../utilities/toolbelt";
 import FavouriteButton from "./FavouriteButton";
+import TrailerButton from "./TrailerButton";
 
 const MovieCard = ({ data, onUnfavourite }) => {
   const [details, setDetails] = useState(null);
-  const navigate = useNavigate();
+  const [trailer, setTrailer] = useState(null);
 
   useEffect(() => {
     if (!data?.id) return;
-    fetchMovieDetail(data.id)
-      .then(setDetails)
+
+    Promise.all([
+      fetchMovieDetail(data.id),
+      fetchMovieTrailer(data.id),
+    ])
+      .then(([movieDetails, movieTrailer]) => {
+        setDetails(movieDetails);
+        setTrailer(movieTrailer);
+      })
       .catch((error) => console.log("Error fetching movie detail:", error));
   }, [data]);
-
-  const handleFavouriteClick = () => {
-    navigate("/favourites");
-  };
 
   if (!data) {
     return (
@@ -29,39 +37,53 @@ const MovieCard = ({ data, onUnfavourite }) => {
   }
 
   return (
-    <div className="movie-container">
-      <Link to={`/moviedetail/${data.id}`}>
+    <article className="movie-container">
+      <Link className="movie-poster-link" to={`/moviedetail/${data.id}`}>
         <img
-          alt={`${data.original_title} poster`}
+          alt={`${data.original_title || data.title} poster`}
           className="movie-card"
-          src={`${URL_IMAGE}w185/${data.poster_path}`}
-          srcSet={`${URL_IMAGE}w185/${data.poster_path} 185w,
-                   ${URL_IMAGE}w300/${data.poster_path} 300w`}
-          sizes="(min-width: 1024px) 300px, 185px"
+          src={`${URL_IMAGE}w300/${data.poster_path}`}
         />
       </Link>
 
-      <div className="movie-info-box">
-        <div className="left">
-          <FavouriteButton
-            movie={data}
-            onFavouriteClick={handleFavouriteClick}
-            onUnfavourite={onUnfavourite} />
-        </div>
-        <div className="right">
+      <div className="movie-hover-card">
+        <div className="movie-hover-content">
           <p className="movie-title">{data.title}</p>
-          <p className="movie-date">{formatReleaseDate(data.release_date)}</p>
-          {details && (
-            <div className="movie-meta">
-              <p className="single-movie-runtime">
-                {formatRuntime(details.runtime)}
-              </p>
-            </div>
+
+          <div className="movie-meta-row">
+            {data.release_date && (
+              <span>{formatReleaseDate(data.release_date)}</span>
+            )}
+
+            {data.vote_average ? (
+              <span>{data.vote_average.toFixed(1)}</span>
+            ) : null}
+
+            {details?.runtime ? (
+              <span>{formatRuntime(details.runtime)}</span>
+            ) : null}
+          </div>
+
+          {data.overview && (
+            <p className="movie-summary">{data.overview}</p>
           )}
+
+          <div className="movie-hover-actions">
+            <TrailerButton trailer={trailer} />
+
+            <FavouriteButton
+              movie={data}
+              onUnfavourite={onUnfavourite}
+            />
+
+            <Link className="movie-info-link" to={`/moviedetail/${data.id}`}>
+              More Info
+            </Link>
+          </div>
         </div>
       </div>
-    </div>
+    </article>
   );
-}
+};
 
 export default MovieCard;

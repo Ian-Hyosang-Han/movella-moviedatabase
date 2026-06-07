@@ -2,82 +2,141 @@
 @use "mixins" as *;
 
 .movie-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0 auto;
+  position: relative;
+  width: min(100%, 165px);
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  border-radius: 0.55rem;
+  background: #111111;
+  box-shadow: 0 16px 35px rgba(0, 0, 0, 0.28);
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
 
-  .movie-card {
-    border-radius: 5px;
-    width: 100%;
-    display: block;
+  &:hover,
+  &:focus-within {
+    transform: translateY(-8px) scale(1.04);
+    box-shadow: 0 24px 55px rgba(0, 0, 0, 0.5);
+
+    .movie-hover-card {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .movie-card {
+      transform: scale(1.08);
+    }
   }
+}
 
-  .movie-info-box {
-    display: flex;
-    gap: 0.5rem;
-    width: 100%;
-    margin-top: 0.5rem;
+.movie-poster-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
 
-    .left {
-      display: flex;
-      align-items: center;
-    }
+.movie-card {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+}
 
-    .right {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 0.9rem;
-      color: white;
+.movie-hover-card {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  align-items: flex-end;
+  opacity: 0;
+  visibility: hidden;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.7) 42%, rgba(0, 0, 0, 0.96) 100%);
+  transition: opacity 0.28s ease, visibility 0.28s ease;
+  pointer-events: none;
+}
 
-      .movie-title {
-        text-transform: uppercase;
-        font-weight: bold;
-        font-size: 1rem;
-        margin: 0;
-        flex-wrap: wrap;
-      }
+.movie-hover-content {
+  width: 100%;
+  padding: 0.85rem;
+  pointer-events: auto;
+}
 
-      .movie-date {
-        display: flex;
-        flex-wrap: wrap;
-        margin: 0.1rem;
-        font-size: 0.8rem;
-        gap: 0.5rem;
-      }
+.movie-title {
+  margin: 0;
+  color: #ffffff;
+  font-family: "Rajdhani", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 900;
+  line-height: 1.05;
+  text-transform: uppercase;
 
-      .movie-meta {
-        display: none;
-      }
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
 
+.movie-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.45rem;
+  color: rgba(255, 255, 255, 0.72);
+  font-family: "Rajdhani", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
 
-    }
+.movie-summary {
+  margin: 0.55rem 0 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-family: "Rajdhani", sans-serif;
+  font-size: 0.82rem;
+  line-height: 1.25;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.movie-hover-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.75rem;
+}
+
+.movie-info-link {
+  height: 2rem;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 999px;
+  color: #ffffff;
+  font-family: "Rajdhani", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.12);
+  transition: background 0.25s ease, color 0.25s ease;
+
+  &:hover {
+    background: #ffffff;
+    color: #111111;
   }
 }
 
 @include mqMin(48em) {
-
   .movie-container {
-    .movie-info-box {
-      .right {
-        .movie-meta {
-          display: flex;
-          flex-wrap: wrap;
-          margin: 0.1rem;
-          font-size: 0.8rem;
-          gap: 0.5rem;
-        }
-      }
-    }
-  }
-
-  .single-movie-runtime {
-    font-size: 0.9rem;
-    margin: 0;
+    width: 175px;
   }
 }
 
-
-@include mqMin(64em) {}
+@include mqMin(64em) {
+  .movie-container {
+    width: 185px;
+  }
+}

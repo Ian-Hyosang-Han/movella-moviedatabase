@@ -3,83 +3,121 @@
 
 .about-wrapper {
     position: relative;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    max-height: 800px;
-    margin: 0 auto;
-    padding: 0 10px;
-    color: $font-color-primary;
-    background-image: url(/about-background02.webp);
+    min-height: 100vh;
+    padding: clamp(7rem, 12vh, 9rem) clamp(1rem, 4vw, 5rem) 4rem;
+    color: #ffffff;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    z-index: 0;
-
-    &::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.7);
-        pointer-events: none;
-        z-index: 1;
-    }
-
-    .about-container {
-        position: relative;
-        z-index: 2;
-
-        h2 {
-            font-size: 2.5rem;
-            text-transform: uppercase;
-            text-align: center;
-            font-family: 'Black Han sans', sans-serif;
-            margin: 2rem 0;
-        }
-
-        p {
-            font-size: 1.1rem;
-            font-family: 'Rajdhani', sans-serif;
-            margin: 0.5rem 0;
-        }
-    }
+    isolation: isolate;
 }
 
-/*================================================
-==========MEDIA QUERIES SECTION DESIGN============
-================================================*/
+.about-wrapper::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background:
+        linear-gradient(90deg, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.58) 48%, rgba(0, 0, 0, 0.86) 100%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, #050505 100%);
+}
+
+.about-wrapper::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: radial-gradient(circle at 20% 40%,
+            rgba(229, 9, 20, 0.16),
+            transparent 34%);
+    pointer-events: none;
+}
+
+.about-container {
+    width: min(920px, 100%);
+    margin: 0 auto;
+}
+
+.about-kicker {
+    margin: 0 0 0.65rem;
+    color: #e50914;
+    font-family: "Rajdhani", sans-serif;
+    font-size: clamp(0.95rem, 1.5vw, 1.2rem);
+    font-weight: 900;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.about-container h1 {
+    max-width: 760px;
+    margin-top: 1rem;
+    color: #ffffff;
+    font-family: "Morganite", sans-serif;
+    font-size: clamp(5rem, 13vw, 11rem);
+    line-height: 0.78;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    text-shadow: 0 14px 38px rgba(0, 0, 0, 0.65);
+}
+
+.about-copy {
+    width: min(720px, 100%);
+    margin-top: 1.5rem;
+    display: grid;
+    gap: 1rem;
+}
+
+.about-copy p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.76);
+    font-family: "Rajdhani", sans-serif;
+    font-size: clamp(1.05rem, 1.7vw, 1.35rem);
+    font-weight: 700;
+    line-height: 1.55;
+}
+
+.about-stats {
+    width: min(780px, 100%);
+    margin-top: clamp(2rem, 5vw, 3.5rem);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+}
+
+.about-stats div {
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(18px);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.24);
+}
+
+.about-stats span {
+    display: block;
+    color: #ffffff;
+    font-family: "Rajdhani", sans-serif;
+    font-size: 1.1rem;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.about-stats p {
+    margin: 0.25rem 0 0;
+    color: rgba(255, 255, 255, 0.58);
+    font-family: "Rajdhani", sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+}
 
 @include mqMin(48rem) {
-    .about-wrapper {
-        .about-container {
-            p {
-                font-size: 1.3rem;
-                text-align: center;
-            }
-        }
+    .about-stats {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
 @include mqMin(64rem) {
-
-    .about-wrapper {
-        align-items: center;
-        justify-content: center;
-        .about-container {
-            h2 {
-                font-size: 3rem;
-                margin: 3rem 0;
-            }
-    
-            p {
-                width: 80%;
-                font-size: 1.5rem;
-                text-align: center;
-                margin: 0.5rem auto;
-            }
-        }
+    .about-container {
+        margin-left: 0;
     }
 }

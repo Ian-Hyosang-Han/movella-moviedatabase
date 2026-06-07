@@ -5,28 +5,28 @@
    Trailer Button
 ─────────────── */
 .trailer-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: transparent;
-  padding: 0;
-  border: none;
+  height: 2.75rem;
+  padding: 0 1.3rem;
+  border: 1px solid rgba(229, 9, 20, 0.85);
+  border-radius: 999px;
+  background: rgba(229, 9, 20, 0.9);
+  color: #ffffff;
+  font-family: "Rajdhani", sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  backdrop-filter: blur(14px);
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
 
-  svg {
-    color: #ffffff;
-    font-size: 3.3rem;
-    transition: color 0.3s ease;
+  &:hover {
+    background: #ffffff;
+    border-color: #ffffff;
+    color: #111111;
+    transform: translateY(-2px);
   }
 
-  &:hover svg {
-    color: #e60000;
-    transform: scale(1.05);
-  }
-
-  &:active svg {
-    transform: scale(0.95);
+  &:active {
+    transform: translateY(0);
   }
 
   &:focus-visible {
@@ -77,10 +77,16 @@
   cursor: pointer;
 }
 
+.movie-hover-actions .trailer-button {
+  height: 2rem;
+  padding: 0 0.75rem;
+  font-size: 0.8rem;
+}
+
 @include mqMin(48em) {
   .trailer-button {
-    svg {
-      font-size: 4rem;
-    }
+    height: 3rem;
+    padding: 0 1.6rem;
+    font-size: 1.1rem;
   }
 }

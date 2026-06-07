@@ -2,224 +2,260 @@
 @use "mixins" as *;
 
 .single-movie-wrapper {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    padding: 0 10px;
-    color: $font-color-primary;
-    font-family: 'Rajdhani', sans-serif;
     position: relative;
-    overflow: hidden;
     z-index: 1;
+    min-height: 100vh;
+    padding: clamp(7rem, 12vh, 9rem) clamp(1rem, 4vw, 5rem) 4rem;
+    color: #ffffff;
+    font-family: "Rajdhani", sans-serif;
+    overflow: hidden;
+    margin-top: 3rem;
+}
 
-    .single-movie-title {
-        width: 90%;
-        font-size: 3rem;
-        margin: 0.5rem;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        font-family: 'Morganite', sans-serif;
-    }
+.single-movie-wrapper::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+}
 
-    .single-movie-poster img {
-        border-radius: 5px;
-        margin-bottom: 0.5rem;
-    }
+.single-movie-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    max-width: 1320px;
+    margin: 0 auto;
+}
 
-    .movie-poster {
-        width: 100%;
-        max-width: 300px;
-        margin: 0 auto;
-        display: block;
-    }
+.single-movie-title {
+    width: 100%;
+    max-width: 900px;
+    margin: 0;
+    color: #ffffff;
+    font-family: "Morganite", sans-serif;
+    font-size: clamp(5rem, 13vw, 11rem);
+    line-height: 0.8;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    text-shadow: 0 14px 38px rgba(0, 0, 0, 0.65);
+}
 
-    .movie-meta {
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        font-size: 1rem;
-        gap: 0.5rem;
+.single-movie-poster {
+    width: min(250px, 70vw);
+}
 
-        p {
-            margin: 0;
-        }
-    }
+.movie-poster {
+    width: 100%;
+    display: block;
+    border-radius: 0.75rem;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.6);
+}
 
-    .movie-actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-top: 0.5rem;
-    }
+.movie-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 1rem;
+    font-weight: 700;
 
-    .single-movie-genre {
-        padding: 0;
-        margin: 0.2rem 0;
-        display: flex;
-        flex-direction: row;
-        gap: 0.2rem;
-        flex-wrap: wrap;
-    }
-
-    .single-movie-genre li {
-        list-style-type: none;
-        white-space: nowrap;
-        display: inline-block;
-    }
-
-    .single-movie-genre li::after {
-        content: " / ";
-    }
-
-    .single-movie-genre li:last-child::after {
-        content: "";
-    }
-
-    .overview-title {
-        font-size: 2rem;
-        font-family: 'Rajdhani', sans-serif;
-        font-weight: bold;
-        margin: 0.5rem 0;
-    }
-
-    .single-movie-overview {
-        width: 100%;
-    }
-
-    .movie-cast-slider {
-        display: flex;
-        overflow-x: auto;
-        gap: 0.75rem;
-        padding-bottom: 1rem;
-        margin-top: 1rem;
-        scroll-snap-type: x mandatory;
-
-        .actor-card {
-            flex: 0 0 auto;
-            width: 120px;
-            text-align: center;
-            scroll-snap-align: start;
-
-            .actor-image {
-                width: 100%;
-                border-radius: 8px;
-            }
-
-            .actor-name {
-                width: 120px;
-                height: 50px;
-                background-color: #3c2a4d;
-                border-bottom-left-radius: 10px;
-                border-bottom-right-radius: 10px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            p {
-                font-size: 1rem;
-                font-weight: bold;
-            }
-        }
+    p {
+        margin: 0;
     }
 }
 
-/*================================================
-==========MEDIA QUERIES SECTION DESIGN============
-================================================*/
+.single-movie-genre {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin: 0;
+    padding: 0;
 
-@include mqMin(48rem) {
+    li {
+        list-style: none;
+        height: 1.75rem;
+        display: inline-flex;
+        align-items: center;
+        padding: 0 0.65rem;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.12);
+        color: rgba(255, 255, 255, 0.82);
+        backdrop-filter: blur(12px);
+        white-space: nowrap;
+    }
 
-    .single-movie-wrapper {
+    li::after {
+        content: "";
+    }
+}
 
-        .single-movie-title {
-            font-size: 5rem;
-        }
+.movie-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 0.35rem;
+}
+
+.movie-actions .favourite-btn {
+    width: auto;
+    min-width: 3rem;
+    height: 3rem;
+    padding: 0 1rem;
+}
+
+.movie-actions .favourite-icon {
+    font-size: 1.2rem;
+}
+
+.movie-actions .trailer-button {
+    height: 3rem;
+    padding: 0 1.5rem;
+    font-size: 1.05rem;
+}
+
+.overview-title {
+    margin: 0.5rem 0 0;
+    color: #ffffff;
+    font-family: "Rajdhani", sans-serif;
+    font-size: clamp(1.5rem, 2.6vw, 2.3rem);
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.single-movie-overview {
+    width: min(760px, 100%);
+    margin: 0;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+    line-height: 1.55;
+}
+
+.movie-cast-slider {
+    max-width: 1320px;
+    margin: 3.5rem auto 0;
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    padding: 0.25rem 0 1.25rem;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
+}
+
+.movie-cast-slider::-webkit-scrollbar {
+    height: 8px;
+}
+
+.movie-cast-slider::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.movie-cast-slider::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.22);
+}
+
+.actor-card {
+    flex: 0 0 138px;
+    scroll-snap-align: start;
+    border-radius: 1rem;
+    padding: 0.45rem;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
+    backdrop-filter: blur(16px);
+    transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+}
+
+.actor-card:hover {
+    transform: translateY(-6px);
+    background: rgba(255, 255, 255, 0.13);
+    border-color: rgba(255, 255, 255, 0.22);
+}
+
+.actor-image {
+    width: 100%;
+    aspect-ratio: 1 / 1.18;
+    display: block;
+    object-fit: cover;
+    border-radius: 0.8rem;
+    filter: saturate(1.05) contrast(1.03);
+}
+
+.actor-name {
+    min-height: 3.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.65rem 0.35rem 0.25rem;
+    background: transparent;
+
+    p {
+        margin: 0;
+        color: #ffffff;
+        font-family: "Rajdhani", sans-serif;
+        font-size: 0.95rem;
+        font-weight: 800;
+        line-height: 1.1;
+        text-align: center;
     }
 }
 
 @include mqMin(64rem) {
+    .single-movie-grid {
+        grid-template-columns: minmax(0, 1fr) 280px;
+        grid-template-rows: auto auto auto auto auto;
+        column-gap: clamp(2rem, 5vw, 5rem);
+        align-items: start;
+    }
 
-    .single-movie-wrapper {
+    .single-movie-title {
+        grid-column: 1 / 2;
+        grid-row: 1;
+    }
 
-        .single-movie-title {
-            font-size: 7rem;
-            margin-top: 1rem;
-        }
+    .single-movie-poster {
+        grid-column: 2 / 3;
+        grid-row: 1 / 6;
+        width: 280px;
+    }
 
-        .single-movie-grid {
-            display: grid;
-            grid-template-columns: 1fr 300px;
-            grid-template-rows: auto auto auto auto auto;
-            align-items: start;
-        }
+    .movie-meta {
+        grid-column: 1 / 2;
+        grid-row: 2;
+        font-size: 1.15rem;
+    }
 
-        .single-movie-title {
-            grid-column: 1 / 2;
-            grid-row: 1;
-            margin-bottom: 0;
-            font-size: 8rem;
-            letter-spacing: 5px;
-        }
+    .movie-actions {
+        grid-column: 1 / 2;
+        grid-row: 3;
+    }
 
-        .single-movie-poster {
-            margin-top: 1rem;
-            grid-column: 2 / 3;
-            grid-row: 1 / 6;
-        }
+    .overview-title {
+        grid-column: 1 / 2;
+        grid-row: 4;
+    }
 
-        .movie-meta {
-            grid-column: 1 / 2;
-            grid-row: 2;
-            font-size: 1.5rem;
-            margin: 1rem 0;
+    .single-movie-overview {
+        grid-column: 1 / 2;
+        grid-row: 5;
+    }
 
-            p {
-                font-size: 1.5rem;
-            }
-        }
-
-        .movie-actions {
-            grid-column: 1 / 2;
-            grid-row: 3;
-        }
-
-        .overview-title {
-            margin: 1rem 0 0.5rem 0;
-            grid-column: 1 / 2;
-            font-size: 2.5rem;
-            grid-row: 4;
-        }
-
-        .single-movie-overview {
-            grid-column: 1 / 2;
-            grid-row: 5;
-            font-size: 1.5rem;
-            width: 80%;
-            margin-top: 0;
-        }
-
-        .movie-cast-slider {
-            width: 80%;
-            margin-top: 2rem;
-            margin-bottom: 2rem;
-            margin-left: 1rem;
-            padding: 0;
-        }
+    .actor-card {
+        flex-basis: 150px;
     }
 }
 
 @include mqMin(78em) {
+    .single-movie-poster {
+        width: 320px;
+    }
 
-    .single-movie-wrapper {
-
-        .single-movie-grid {
-            padding: 3rem 5rem 3rem 5rem;
-        }
-
-        .movie-cast-slider {
-            margin: 3rem 5rem;
-        }
-
+    .single-movie-grid {
+        grid-template-columns: minmax(0, 1fr) 320px;
     }
 }

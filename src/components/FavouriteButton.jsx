@@ -1,26 +1,23 @@
 import { useContext } from "react";
 import { GlobalContext } from "../context/GlobalContext";
-import { BiSolidBookHeart } from "react-icons/bi";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 function FavouriteButton({ movie, onFavouriteClick, onUnfavourite }) {
-  const { favourites, addFavourite, removeFavourite } = useContext(GlobalContext);
+  const { favourites, addFavourite, removeFavourite } =
+    useContext(GlobalContext);
 
-  // determine whether the movie is already in favorites
-  const isFavourite = favourites.find((fav) => {
-    return fav.id === movie.id;
-  });
+  const isFavourite = favourites.find((fav) => fav.id === movie.id);
 
   function handleClick(e) {
+    e.preventDefault();
     e.stopPropagation();
+
     if (isFavourite) {
       removeFavourite(movie);
       if (onUnfavourite) onUnfavourite();
     } else {
       addFavourite(movie);
-
-      if (onFavouriteClick) {
-        onFavouriteClick();
-      }
+      if (onFavouriteClick) onFavouriteClick();
     }
   }
 
@@ -29,8 +26,13 @@ function FavouriteButton({ movie, onFavouriteClick, onUnfavourite }) {
       onClick={handleClick}
       className={`favourite-btn ${isFavourite ? "active" : ""}`}
       aria-label="Toggle Favourite"
+      type="button"
     >
-      <BiSolidBookHeart className="favourite-icon" />
+      {isFavourite ? (
+        <FaHeart className="favourite-icon" />
+      ) : (
+        <FaRegHeart className="favourite-icon" />
+      )}
     </button>
   );
 }

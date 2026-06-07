@@ -1,19 +1,18 @@
 import { useState } from "react";
-import { FaYoutube } from "react-icons/fa";
 
 const TrailerButton = ({ trailer }) => {
   const [showTrailer, setShowTrailer] = useState(false);
 
-  if (!trailer) return <p>No trailer available.</p>;
+  if (!trailer) return null;
 
   return (
     <>
       <button
         onClick={() => setShowTrailer(true)}
         className="trailer-button"
-        aria-label="Play Trailer"
+        aria-label="Watch trailer"
       >
-        <FaYoutube />
+        Watch Trailer
       </button>
 
       {showTrailer && (
@@ -25,9 +24,11 @@ const TrailerButton = ({ trailer }) => {
             <button
               className="close-modal"
               onClick={() => setShowTrailer(false)}
+              aria-label="Close trailer"
             >
-              
+              Close
             </button>
+
             <iframe
               width="100%"
               height="100%"
@@ -42,6 +43,6 @@ const TrailerButton = ({ trailer }) => {
       )}
     </>
   );
-}
+};
 
 export default TrailerButton;

@@ -18,12 +18,10 @@ const MoviesContainer = ({ title, movies, flex = false }) => {
   const settings = {
     dots: false,
     arrows: false,
-    // centerMode: true,
-    slidesToShow: 6,
+    slidesToShow: 9,
     slidesToScroll: 5,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
-    // swipeToSlide: true,
     swipe: true,
     draggable: true,
     infinite: true,
@@ -32,48 +30,24 @@ const MoviesContainer = ({ title, movies, flex = false }) => {
       {
         breakpoint: 1820,
         settings: {
-          slidesToShow: 5,
-          slidesToScroll: 4,
-          arrows: true,
-        },
-      },
-      {
-        breakpoint: 1720,
-        settings: {
-          slidesToShow: 5,
-          slidesToScroll: 4,
+          slidesToShow: 8,
+          slidesToScroll: 5,
           arrows: true,
         },
       },
       {
         breakpoint: 1650,
         settings: {
-          slidesToShow: 4,
-          slidesToScroll: 4,
-          arrows: true,
-        },
-      },
-      {
-        breakpoint: 1480,
-        settings: {
-          slidesToShow: 4,
-          slidesToScroll: 4,
+          slidesToShow: 7,
+          slidesToScroll: 5,
           arrows: true,
         },
       },
       {
         breakpoint: 1310,
         settings: {
-          slidesToShow: 4,
+          slidesToShow: 6,
           slidesToScroll: 4,
-          arrows: true,
-        },
-      },
-      {
-        breakpoint: 1150,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
           arrows: true,
         },
       },
@@ -81,14 +55,6 @@ const MoviesContainer = ({ title, movies, flex = false }) => {
         breakpoint: 970,
         settings: {
           slidesToShow: 4,
-          slidesToScroll: 4,
-          arrows: true,
-        },
-      },
-      {
-        breakpoint: 800,
-        settings: {
-          slidesToShow: 3,
           slidesToScroll: 3,
           arrows: true,
         },
@@ -98,15 +64,6 @@ const MoviesContainer = ({ title, movies, flex = false }) => {
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
-          arrows: true,
-        },
-      },
-      {
-        breakpoint: 340,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          centerMode: true,
           arrows: true,
         },
       },
@@ -121,22 +78,12 @@ const MoviesContainer = ({ title, movies, flex = false }) => {
     return loadingCards;
   };
 
-  if (flex) {
-    return (
-      <>
-        {title && <h2>{title}</h2>}
-        <div className="movies-container movies-flexed">
-          {movies
-            ? movies.map((movie) => <MovieCard data={movie} />)
-            : renderLoadingCards()}
-        </div>
-      </>
-    );
-  }
-
   return (
     <div className="movies-container">
-      <h2>{title}</h2>
+      <div className="movies-section-heading">
+        <span className="movies-section-kicker">Explore</span>
+        <h2>{title}</h2>
+      </div>
       {movies ? (
         <Slider {...settings}>
           {movies.map((movieData, index) => (

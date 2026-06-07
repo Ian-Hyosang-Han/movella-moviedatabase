@@ -3,77 +3,83 @@
 
 .searchBoxWrapper {
   position: relative;
-  display: inline-block;
+  display: inline-flex;
 }
 
 .searchBox {
   display: flex;
   align-items: center;
-  border: 2px solid rgba(255, 255, 255, 0.6);
-  border-radius: 35px;
-  height: 40px;
-  overflow: hidden;
-  padding: 0 0.5rem;
-  transition: all 0.3s ease-in-out;
+  height: 2.75rem;
+  width: clamp(11rem, 22vw, 21rem);
+  padding: 0 0.55rem 0 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.22);
 
   .searchInput {
-    width: 0;
+    width: 100%;
+    min-width: 0;
     border: none;
     outline: none;
-    background: none;
-    color: white;
-    font-size: 16px;
+    background: transparent;
+    color: #ffffff;
+    font-family: "Rajdhani", sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
     padding: 0;
-    transition: all 0.3s ease-in-out;
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.62);
+    }
   }
 
   .searchButton {
-    background: none;
+    flex: 0 0 auto;
+    width: 2rem;
+    height: 2rem;
     border: none;
-    color: white;
-    width: 35px;
-    height: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    border-radius: 50%;
+    background: transparent;
+    color: #ffffff;
+    display: grid;
+    place-items: center;
     cursor: pointer;
-    transition: transform 0.3s;
-  }
-
-  &.active {
-    .searchInput {
-      width: 150px;
-      padding: 0 10px;
-    }
-
-    .searchButton {
-      transform: rotate(90deg) scale(1.1);
-    }
   }
 }
 
 .searchDropdown {
   position: absolute;
-  top: calc(100% + 5px);
-  left: 0;
-  width: 100%;
-  background-color: #222;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
-  z-index: 1000;
-  max-height: 300px;
+  top: calc(100% + 0.6rem);
+  right: 0;
+  width: min(21rem, 86vw);
+  max-height: 320px;
   overflow-y: auto;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 100;
+  padding: 0.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 1rem;
+  background: rgba(8, 8, 8, 0.88);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
 
   .searchResultItem {
-    padding: 10px 15px;
-    font-size: 14px;
-    color: white;
+    padding: 0.75rem 0.85rem;
+    border-radius: 0.7rem;
+    color: #ffffff;
+    font-family: "Rajdhani", sans-serif;
+    font-size: 0.98rem;
     cursor: pointer;
-    transition: background 0.2s;
 
     &:hover {
-      background-color: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.12);
     }
+  }
+}
+
+@include mqMax(47.99em) {
+  .searchBox {
+    width: 11rem;
   }
 }

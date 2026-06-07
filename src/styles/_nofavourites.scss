@@ -2,37 +2,69 @@
 @use "mixins" as *;
 
 .no-favourites-page {
-    text-align: center;
-    padding: 4rem 2rem;
-    color: white;
-    font-family: 'Rajdhani', sans-serif;
-  
-    .icon-wrapper {
-      margin-bottom: 1rem;
-    }
-  
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-  
-    p {
-      font-size: 1rem;
-      margin-bottom: 2rem;
-    }
-  
-    .btn-go-home {
-      display: inline-block;
-      background-color: #3c2a4d;
-      color: white;
-      padding: 0.75rem 1.5rem;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background-color 0.3s ease;
-  
-      &:hover {
-        background-color: #553b6e;
-      }
-    }
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: clamp(7rem, 12vh, 9rem) clamp(1rem, 4vw, 4rem) 4rem;
+  color: #ffffff;
+  font-family: "Rajdhani", sans-serif;
+}
+
+.no-favourites-panel {
+  width: min(680px, 100%);
+  padding: clamp(2rem, 5vw, 4rem);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 1.25rem;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.38);
+}
+
+.no-favourites-kicker {
+  margin: 0 0 0.6rem;
+  color: #e50914;
+  font-size: clamp(0.95rem, 1.5vw, 1.2rem);
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.no-favourites-panel h1 {
+  margin: 0;
+  color: #ffffff;
+  font-family: "Morganite", sans-serif;
+  font-size: clamp(5rem, 13vw, 10rem);
+  line-height: 0.78;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.no-favourites-panel p {
+  max-width: 520px;
+  margin: 1.25rem 0 2rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.btn-go-home {
+  height: 3rem;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 1.5rem;
+  border: 1px solid rgba(229, 9, 20, 0.85);
+  border-radius: 999px;
+  background: rgba(229, 9, 20, 0.9);
+  color: #ffffff;
+  font-size: 1.05rem;
+  font-weight: 900;
+  text-decoration: none;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+
+  &:hover {
+    background: #ffffff;
+    color: #111111;
+    transform: translateY(-2px);
   }
+}

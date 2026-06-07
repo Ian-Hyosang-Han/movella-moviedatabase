@@ -2,14 +2,20 @@
 @use "mixins" as *;
 
 .movies-container {
+  position: relative;
   margin: 0 auto;
-  padding: 0 0.5rem;
+  padding: 0 clamp(0.75rem, 2vw, 2rem);
+  // padding-bottom: clamp(3.5rem, 6vw, 5.5rem);
   max-width: 1920px;
   width: 100%;
 
+  .slick-list {
+    overflow: hidden;
+    padding: 0.75rem 0 2rem;
+  }
+
   .slick-track {
     display: flex !important;
-    justify-content: center;
   }
 
   .slick-slide {
@@ -17,24 +23,50 @@
     display: flex !important;
     justify-content: center;
   }
+
+  .slick-slide>div {
+    width: 100%;
+    padding: 0 0.15rem;
+  }
 }
 
-.movies-container h2 {
-  position: relative;
+.movies-section-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+  margin: 2.5rem 0 1rem;
+}
+
+.movies-section-kicker {
+  color: #e50914;
+  font-family: "Rajdhani", sans-serif;
+  font-size: clamp(1rem, 1.5vw, 1.5rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
-  font-family: 'Open sans', Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  margin: 0 0.5rem 0.5rem 0.1rem;
-  padding-left: 1rem;
 }
 
-.movies-container h2::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 8px;
-  height: 100%;
-  background-color: hsl(271, 44%, 60%);
+.movies-section-heading h2 {
+  margin: 0;
+  color: #ffffff;
+  font-family: "Rajdhani", sans-serif;
+  font-size: clamp(1.7rem, 3vw, 3rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.movies-section-heading::after {
+  content: "";
+  width: min(220px, 35vw);
+  height: 2px;
+  margin-top: 0.4rem;
+  background: linear-gradient(90deg,
+      rgba(229, 9, 20, 0.85),
+      rgba(255, 255, 255, 0.08));
 }
 
 .movies-flexed {
@@ -84,34 +116,18 @@
 ================================================*/
 
 @include mqMin(48em) {
-
   .movies-container {
-    margin-bottom: 2.5rem;
-
-    h2 {
-      margin-left: 1.9rem;
-      margin: 1rem 0 1rem 2rem;
-    }
-
+    margin-bottom: 0;
   }
 }
 
 @include mqMin(64em) {
-
   .movies-container {
-    margin-bottom: 3rem;
+    margin-bottom: 0;
+
     h2 {
       font-size: 3rem;
       letter-spacing: 3px;
-      margin: 2rem 0 1rem 1rem;
     }
   }
-}
-
-@include mqMin(75em) {
-
-  .movies-container h2 {
-    margin: 3rem 0 1rem 1.2rem;
-  }
-
 }

@@ -2,174 +2,66 @@
 @use "mixins" as *;
 
 .favourites-page {
-  padding: 10px;
-  max-width: 320px;
-  margin: 0 auto;
-  min-height: calc(100vh - 160px);
+  min-height: 100vh;
+  padding: clamp(7rem, 12vh, 9rem) clamp(1rem, 4vw, 4rem) 4rem;
+  color: #ffffff;
+  font-family: "Rajdhani", sans-serif;
   opacity: 1;
   transform: translateY(0);
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.movie-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: space-between;
-  min-height: 60vh;
+.favourites-hero {
+  max-width: 1320px;
+  margin: 0 auto 2rem;
+}
+
+.favourites-kicker {
+  margin: 0 0 0.45rem;
+  color: #e50914;
+  font-size: clamp(0.95rem, 1.5vw, 1.25rem);
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
 .fave-header {
-  text-shadow: var(--text-shadow);
+  margin-top: 1rem;
+  color: #ffffff;
+  font-family: "Morganite", sans-serif;
+  font-size: clamp(5rem, 13vw, 11rem);
+  line-height: 0.78;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  text-shadow: 0 14px 38px rgba(0, 0, 0, 0.65);
 }
 
-.movie-card {
-  flex: 0 0 calc(50% - 5px);
-  height: 218px;
-  border-radius: 8px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: var(--box-shadow);
-  margin: 0;
-  padding: 0;
-  animation: fadeIn 0.3s ease-in;
-  font-size: 0.7rem;
-
-  &:hover {
-    transform: none;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-
-  &:active {
-    transform: scale(1.03);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  }
+.favourites-subtitle {
+  max-width: 520px;
+  margin: 1rem 0 0;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-weight: 700;
+  line-height: 1.45;
 }
 
-.backdrop {
-  padding: 10px;
+.movie-grid {
+  max-width: 1320px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
+  gap: clamp(0.8rem, 1.4vw, 1.2rem);
+  align-items: start;
 }
 
-h1 {
-  font-size: 2.5rem;
-  margin-bottom: 30px;
-  font-family: var(--heading-font);
-  font-weight: 800;
+.favourite-grid-item {
+  display: flex;
+  justify-content: center;
 }
 
-.rating-border {
-  width: 30px;
-  height: 30px;
-  font-size: 0.8rem;
-  border-width: 2px;
-}
-
-.title-and-release h2 {
-  font-size: 1rem;
-  margin-bottom: 4px;
-}
-
-.title-and-release p {
-  font-size: 0.5rem;
-  margin-bottom: 4px;
-}
-
-.release-date,
-.movie-excerpt {
-  font-size: 0.6em;
-  line-height: 1.2;
-}
-
-.rating-and-favorite {
-  gap: 5px;
-  margin-bottom: 5px;
-}
-
-.fave-icon {
-  width: 20px;
-  height: 20px;
-}
-
-@include mqMin(48em) {
-  .favourites-page {
-    max-width: 48rem;
-    padding: 20px;
-  }
-
-  .movie-grid {
-    gap: 20px;
-    justify-content: flex-start;
-  }
-
-  .movie-card {
-    flex: 0 0 300px;
-    height: 450px;
-    font-size: 1rem;
-  }
-
-  .backdrop {
-    padding: 0;
-  }
-
-  .rating-border {
-    width: 40px;
-    height: 40px;
-    font-size: 1rem;
-    border-width: 3px;
-  }
-
-  .title-and-release h2 {
-    font-size: 1.25rem;
-  }
-
-  .title-and-release p {
-    font-size: 0.875rem;
-  }
-
-  .release-date,
-  .movie-excerpt {
-    font-size: 0.875em;
-    line-height: 1.4;
-  }
-
-  .fave-icon {
-    width: 30px;
-    height: 30px;
-  }
-}
-
-@include mqMin(64em) {
-  .favourites-page {
-    max-width: 75rem;
-  }
-}
-
-@include mqMin(87.5em) {
-  .favourites-page {
-    max-width: 87.5rem;
-  }
-
-//   .movie-card:hover {
-//     transform: scale(1.03);
-//     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-//   }
-
-//   .movie-card:active {
-//     transform: none;
-//     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-//   }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+.favourites-page .movie-container {
+  width: 100%;
+  max-width: 185px;
 }
 
 .fade-exit {
@@ -178,11 +70,23 @@ h1 {
 
 .fade-exit-active {
   opacity: 0;
-  transform: scale(0.9);
+  transform: scale(0.96);
   transition: opacity 300ms, transform 300ms;
 }
 
 .page-exit {
   opacity: 0;
   transform: translateY(-20px);
+}
+
+@include mqMin(48em) {
+  .movie-grid {
+    grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
+  }
+}
+
+@include mqMin(64em) {
+  .favourites-page .movie-container {
+    max-width: 190px;
+  }
 }

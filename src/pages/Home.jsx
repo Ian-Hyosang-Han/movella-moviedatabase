@@ -75,15 +75,19 @@ const Home = () => {
 
   return (
     <main className="home-page">
-      <div className="hero-container">
+      <section className="home-hero">
         <Swiper
           className="home-banner"
           onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-          spaceBetween={50}
+          spaceBetween={0}
           slidesPerView={1}
-          speed={800}
-          effect={"fade"}
+          speed={900}
+          effect="fade"
           fadeEffect={{ crossFade: true }}
+          autoplay={{
+            delay: 5500,
+            disableOnInteraction: false,
+          }}
           pagination={{
             clickable: true,
             bulletClass: "swiper-pagination-bullet",
@@ -99,10 +103,12 @@ const Home = () => {
             </SwiperSlide>
           ))}
         </Swiper>
+  
         {heroMovies.length > 0 && (
           <HeroInfo movie={heroMovies[activeIndex]} />
         )}
-      </div>
+      </section>
+  
       <MoviesContainer title="Upcoming" movies={upcomingMovies} />
       <MoviesContainer title="Now Playing" movies={nowPlayingMovies} />
       <MoviesContainer title="Popular" movies={popularMovies} />

@@ -33,37 +33,39 @@ const Favourites = () => {
   };
 
   return (
-    <>
-      {/* Main container with conditional exit animation class */}
-      <div className={`favourites-page ${isExiting ? "page-exit" : ""}`}>
+    <main className={`favourites-page ${isExiting ? "page-exit" : ""}`}>
+      <section className="favourites-hero">
+        <p className="favourites-kicker">Saved Collection</p>
         <h1 className="fave-header">Favourites</h1>
-        {/* Container for animated movie grid */}
-        <TransitionGroup className="movie-grid">
-          {favourites.map((movie) => {
-            if (!nodeRefs.current[movie.id]) {
-              nodeRefs.current[movie.id] = React.createRef();
-            }
+        <p className="favourites-subtitle">
+          Your personal watchlist of films worth returning to.
+        </p>
+      </section>
 
-            return (
-              <CSSTransition
-                key={movie.id}
-                timeout={300}
-                classNames="fade"
-                nodeRef={nodeRefs.current[movie.id]}
-              >
-                <div ref={nodeRefs.current[movie.id]}>
-                  <MovieCard
-                    data={movie}
-                    onUnfavourite={() => handleRemoveFavourite(movie)}
-                  />
-                </div>
-              </CSSTransition>
-            );
-          })}
-        </TransitionGroup>
+      <TransitionGroup className="movie-grid">
+        {favourites.map((movie) => {
+          if (!nodeRefs.current[movie.id]) {
+            nodeRefs.current[movie.id] = React.createRef();
+          }
 
-      </div>
-    </>
+          return (
+            <CSSTransition
+              key={movie.id}
+              timeout={300}
+              classNames="fade"
+              nodeRef={nodeRefs.current[movie.id]}
+            >
+              <div className="favourite-grid-item" ref={nodeRefs.current[movie.id]}>
+                <MovieCard
+                  data={movie}
+                  onUnfavourite={() => handleRemoveFavourite(movie)}
+                />
+              </div>
+            </CSSTransition>
+          );
+        })}
+      </TransitionGroup>
+    </main>
   );
 }
 
