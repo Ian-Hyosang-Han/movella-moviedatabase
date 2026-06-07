@@ -86,37 +86,13 @@ movella/
 - Save movies to favourites and manage them through the favourites page.
 - Return to the landing page by clicking the MOVELLA logo.
 
-## 🔐 Environment Variables
+## 🌐 Deployment
 
-This project uses the TMDB API. Create a `.env` file in the project root and add your API key:
+<img alt="Vercel" src="https://img.shields.io/badge/-Vercel-000000?style=flat-square&logo=vercel&logoColor=white" />
 
-VITE_TMDB_API_KEY=your_tmdb_api_key
+## 🔗 Live Site
 
-Environment variables are not included in the repository.
-
-## 🧪 Available Scripts
-
-pnpm dev
-
-Runs the development server.
-
-pnpm lint
-
-Checks the project with ESLint.
-
-pnpm build
-
-Builds the project for production.
-
-pnpm preview
-
-Previews the production build locally.
-
-## ✅ Project Status
-
-- Lint: Passed
-- Production Build: Passed
-- Deployment Ready: Yes
+[movella-moviedatabase.vercel.app](https://movella-moviedatabase.vercel.app/)
 
 ## 🧠 What I Learned
 
